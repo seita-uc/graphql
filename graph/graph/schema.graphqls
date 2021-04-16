@@ -1,0 +1,53 @@
+type Follow {
+  createdAt: String!
+  followee: User!
+  follower: User!
+  id: ID!
+}
+
+type Like {
+  createdAt: String!
+  id: ID!
+  liker: User!
+}
+
+type Mutation {
+  createPost()
+  deletePost()
+  createUser()
+  createFollow()
+  createLike()
+  createTodo(input: NewTodo!): Todo!
+}
+
+input NewTodo {
+  text: String!
+  userId: String!
+}
+
+type Post {
+  content: String!
+  createdAt: String!
+  id: ID!
+  likes: [Like]!
+  originalPost: Post
+  poster: User!
+  updatedAt: String!
+}
+
+type Query {
+  todos: [Todo!]!
+}
+
+type User {
+  createdAt: String!
+  displayName: String!
+  followees: [User]!
+  followers: [User]!
+  id: ID!
+  posts: [Post]!
+  profileImageURL: String!
+  profileText: String!
+  updatedAt: String!
+  userHandleID: String!
+}
